@@ -34,17 +34,24 @@ vim.keymap.set("n", "<leader>h", ":%s/<C-r><C-w>")
 
 -- Make shortcut. Custom make target can be provided with the TARGET env
 -- variable
-vim.keymap.set("n", "<leader>m", function()
-	-- TODO: replace hardcoded jobs count with cpu detection
+local function build_make_command()
 	local make_target = os.getenv("TARGET")
-	local make_cmd="!make -j18"
+	-- Let's alway keep one core available to do other things while we
+	-- wait for any build to finish
+	local cores = tonumber(vim.fn.system("nproc"))
+	local make_cmd="make -j" .. tostring(cores - 1)
 	if make_target ~= nil then
 		make_cmd = make_cmd .. " " .. make_target
 	end
+	return make_cmd
+end
+
+vim.keymap.set("n", "<leader>m", function()
+	local make_cmd="!" .. build_make_command()
 	vim.cmd("wa");
 	vim.cmd(make_cmd)
 end
 	)
 vim.keymap.set("n", "<leader>b", function()
-	vim.fn.system("bear -- make -j18")
+	vim.fn.system("bear -- " .. build_make_command)
 end)
