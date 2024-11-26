@@ -34,24 +34,30 @@ vim.keymap.set("n", "<leader>h", ":%s/<C-r><C-w>")
 
 -- Make shortcut. Custom make target can be provided with the TARGET env
 -- variable
-local function build_make_command()
-	local make_target = os.getenv("TARGET")
-	-- Let's alway keep one core available to do other things while we
-	-- wait for any build to finish
+local function build_make_command(...)
+	local build_cmd = "make"
 	local cores = tonumber(vim.fn.system("nproc"))
-	local make_cmd="make -j" .. tostring(cores - 1)
-	if make_target ~= nil then
-		make_cmd = make_cmd .. " " .. make_target
+	build_cmd="make -j" .. tostring(cores - 1)
+	for _,v in ipairs({...}) do
+		build_cmd = build_cmd .. v
 	end
-	return make_cmd
+	return build_cmd
 end
 
 vim.keymap.set("n", "<leader>m", function()
-	local make_cmd="!" .. build_make_command()
+	local task_cmd = os.getenv("TASK_CMD")
+	if task_cmd == nil then
+		task_cmd = build_make_command()
+	end
 	vim.cmd("wa");
-	vim.cmd(make_cmd)
+	-- If TASK_CMD is enclosed between quotes, remove those
+	task_cmd = string.gsub(task_cmd, '"(.*)"', "!%1")
+	vim.cmd(task_cmd)
 end
 	)
 vim.keymap.set("n", "<leader>b", function()
-	vim.fn.system("bear -- " .. build_make_command)
+	local cmd = "!bear -- " .. build_make_command()
+	cmd = string.gsub(cmd, '"(.*)"', "%1")
+	print(cmd)
+	vim.cmd(cmd)
 end)
