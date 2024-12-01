@@ -10,14 +10,9 @@ cmp.setup({
 		documentation= cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
-		-- Navigate between completion items
 		['<C-p>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
 		['<C-n>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
-
-		-- Ctrl+Space to trigger completion menu
 		['<C-Space>'] = cmp.mapping.complete(),
-
-		-- Scroll up and down in the completion documentation
 		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-d>'] = cmp.mapping.scroll_docs(4),
 		['<CR>'] = cmp.mapping.confirm({select = true}),
@@ -36,7 +31,6 @@ cmp.setup({
 			end
 		end, { 'i', 's' }),
 
-		-- Super shift tab
 		['<S-Tab>'] = cmp.mapping(function(fallback)
 			local luasnip = require('luasnip')
 
