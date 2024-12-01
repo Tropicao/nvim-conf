@@ -5,6 +5,10 @@ cmp.setup({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
 	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation= cmp.config.window.bordered(),
+	},
 	mapping = cmp.mapping.preset.insert({
 		-- Navigate between completion items
 		['<C-p>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
