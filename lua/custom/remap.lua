@@ -61,3 +61,10 @@ vim.keymap.set("n", "<leader>b", function()
 	print(cmd)
 	vim.cmd(cmd)
 end)
+
+-- Map pane resize
+vim.keymap.set("n", "<leader>,", ":vertical resize -10<CR>")
+vim.keymap.set("n", "<leader>.", ":vertical resize +10<CR>")
+
+-- Quick add missing semicolon
+vim.keymap.set("n", "<leader>;", "A;<ESC>")
