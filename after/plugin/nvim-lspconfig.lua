@@ -30,3 +30,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end,
 })
+
+vim.keymap.set('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float({border = "single"})<CR>')
