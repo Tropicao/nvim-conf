@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 -- Display vertical split separator by encorcing color
 vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = function()
-		vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#ffffff', bg = '#000000'} )end
+		vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#ffffff', bold = true } )end
 	})
 
 
