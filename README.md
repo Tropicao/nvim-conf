@@ -7,7 +7,10 @@ based on lua scripts, and is project agnostic. One major concern for this
 configuration is to try to prevent a plugin bloat: only the strict minimum
 is used here (ie: when I did not find how to perform the targeted
 configuration with Lua/vim commands, or when I judged it was not worth the
-effort)
+effort).
+
+As my workflow heavily rely on tmux as well, this repository also contains
+my tmux configuration.
 
 ## Main features
 
@@ -21,7 +24,11 @@ effort)
 
 ## Installation
 
-`git clone git@github.com:Tropicao/nvim-conf.git .config/nvim`
+```
+git clone git@github.com:Tropicao/nvim-conf.git /tmp/nvim-conf
+cp -r /tmp/nvim-conf/nvim .config
+cp /tmp/nvim-conf/tmux/.tmux.conf ~
+```
 
 ## Notes
 
