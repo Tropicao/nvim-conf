@@ -11,6 +11,7 @@ opt.incsearch=true
 opt.scrolloff=999
 opt.mouse="c"
 opt.autoread=true
+opt.colorcolumn="80"
 local statusline = {
 	"%#String#",	-- highlight
 	"%f",		-- filename

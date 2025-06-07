@@ -7,13 +7,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function() vim.fn.chdir(vim.fn.expand("%:p:h")) end
 })
 
--- Display vertical split separator by encorcing color
-vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = function()
-		vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#ffffff', bold = true } )end
-	})
-
-
 
 -- Load env file in current directory
 vim.api.nvim_create_autocmd({"DirChanged", "VimEnter"}, {
