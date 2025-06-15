@@ -30,6 +30,19 @@ cp -r /tmp/nvim-conf/nvim .config
 cp /tmp/nvim-conf/tmux/.tmux.conf ~
 ```
 
+
+## Dependencies/post-setup configuration
+
+- ripgrep must be installed to allow Telescope (fuzzy finder) to work
+- This neovim configuration installs LSP interface, but it does not install
+  any LSP. It is up to you to install the LSP(s) relevant for your project,
+  and then to enable those in neovim. For example, if you want to work on C
+  projects
+  - install the clangd LSP package on your host
+  - install the full neovim configuration (see instructions above)
+  - open Mason (`:Mason`)
+  - navigate in the LSP list, install the clangd support
+
 ## Notes
 
 This configuration is the result of a recent initiative to improve my
